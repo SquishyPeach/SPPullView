@@ -3,7 +3,7 @@ What Is It
 
 SPPullView is a simple pull to refresh implementation using a UIScrollView.  Similar to refresh views used by the New York Times, Facebook, and Sparrow.  Updated for ARC support and based off of [Pull To Refresh View](https://github.com/chpwn/PullToRefreshView).  See example image from New York Times app below.
 
-![New York Times PullView](http://imgur.com/kE3o3)
+![New York Times PullView](http://imgur.com/kE3o3.png)
 
 
 How To Get Started
