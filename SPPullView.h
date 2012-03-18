@@ -47,7 +47,6 @@ typedef enum
 
 @protocol  SPPullViewDelegate <NSObject>
 
-@optional
 - (void) pullViewShouldRefresh:(SPPullView *) view;
 
 @end
