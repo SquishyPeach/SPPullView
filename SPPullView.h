@@ -30,12 +30,12 @@ typedef enum
 	PullViewStateLoading
 } PullViewState;
 
-@protocol PullViewDelegate;
+@protocol SPPullViewDelegate;
 
 @interface SPPullView : UIView
 
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, weak) id <PullViewDelegate> delegate;
+@property (nonatomic, weak) id <SPPullViewDelegate> delegate;
 
 - (void) refreshLastUpdatedDate;
 - (void) finishedLoading;
@@ -45,7 +45,7 @@ typedef enum
 
 @end
 
-@protocol  PullViewDelegate <NSObject>
+@protocol  SPPullViewDelegate <NSObject>
 
 @optional
 - (void) pullViewShouldRefresh:(SPPullView *) view;
