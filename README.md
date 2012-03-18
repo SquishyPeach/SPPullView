@@ -46,8 +46,5 @@ Delegate Methods
 
 ``` 
 //Called when the user pulls to refresh (this is when you should update your data)
-- (void) pullViewShouldRefresh: (PullView *) view;
-
-//Called when the date shown needs to be updated
-- (NSDate *) pullViewLastUpdated:(PullView *) view;
+- (void) pullViewShouldRefresh: (SPPullView *) view;
 ```
