@@ -43,14 +43,6 @@
 @synthesize scrollView = _scrollView, delegate = _delegate;
 @synthesize state = _state, lastUpdatedLabel = _lastUpdatedLabel, statusLabel = _statusLabel, activityView = _activityView;
 
-- (void)showActivity:(BOOL)shouldShow animated:(BOOL)animated 
-{
-    if (shouldShow) 
-        [self.activityView startAnimating];
-    else 
-        [self.activityView stopAnimating];
-}
-
 + (id) pullViewWithScrollView:(UIScrollView *)scrollView
 {
     return [[self alloc] initWithScrollView:scrollView];
@@ -98,23 +90,7 @@
     return self;
 }
 
-#pragma mark -
-
-- (void)refreshLastUpdatedDate 
-{
-    NSDate *date = [NSDate date];
-    
-	if ([self.delegate respondsToSelector:@selector(pullViewLastUpdated:)])
-		date = [self.delegate pullViewLastUpdated:self];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setAMSymbol:@"AM"];
-    [formatter setPMSymbol:@"PM"];
-    [formatter setDateFormat:@"MM/dd/yy h:mm a"];
-    self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [formatter stringFromDate:date]];
-}
-
-#pragma mark Setters
+#pragma mark Setter for Pull View
 
 - (void) setState:(PullViewState) state 
 {
@@ -146,7 +122,7 @@
 	}
 }
 
-#pragma mark UIScrollView
+#pragma mark UIScrollView Checking
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context 
 {
@@ -187,7 +163,26 @@
     }
 }
 
-- (void)finishedLoading 
+- (void)refreshLastUpdatedDate 
+{
+    NSDate *date = [NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setAMSymbol:@"AM"];
+    [formatter setPMSymbol:@"PM"];
+    [formatter setDateFormat:@"MM/dd/yy h:mm a"];
+    self.lastUpdatedLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [formatter stringFromDate:date]];
+}
+
+- (void) showActivity:(BOOL)shouldShow animated:(BOOL)animated 
+{
+    if (shouldShow) 
+        [self.activityView startAnimating];
+    else 
+        [self.activityView stopAnimating];
+}
+
+- (void) finishedLoading 
 {
     if (self.state == PullViewStateLoading) 
     {
@@ -198,10 +193,9 @@
     }
 }
 
-#pragma mark -
 #pragma mark Dealloc
 
-- (void)dealloc 
+- (void) dealloc 
 {
 	[self.scrollView removeObserver:self forKeyPath:@"contentOffset"];    
 }

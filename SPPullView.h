@@ -37,11 +37,11 @@ typedef enum
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, weak) id <SPPullViewDelegate> delegate;
 
++ (id) pullViewWithScrollView:(UIScrollView *) scrollView;
+- (id) initWithScrollView:(UIScrollView *) scrollView;
+
 - (void) refreshLastUpdatedDate;
 - (void) finishedLoading;
-
-+ (id) pullViewWithScrollView:(UIScrollView *) scrollView;
-- (id) initWithScrollView:(UIScrollView *)scrollView;
 
 @end
 
@@ -49,7 +49,6 @@ typedef enum
 
 @optional
 - (void) pullViewShouldRefresh:(SPPullView *) view;
-- (NSDate *) pullViewLastUpdated:(SPPullView *) view;
 
 @end
 
