@@ -12,12 +12,7 @@ How To Get Started
 -  Download SPPullView and add SPPullView.h and SPPullView.m to your project
 -  Import SPPullView.h to your class
 -  Create an instance variable for SPPullView in your classes .h like this and synthesize it in your .m
-
-```
-@property (nonatomic, strong) SPPullView *pullView;
-```
-
--  In your viewDidLoad create the PullView and pass in the UIScrollView you are using
+-  In your viewDidLoad (or wherever you'd like) create the PullView and pass in the UIScrollView you are using
 
 ``` 
 self.pullView = [SPPullView pullViewWithScrollView:self.scrollView];
