@@ -25,12 +25,16 @@
 
 typedef enum 
 {
-    PullViewStateNormal = 0,
+   	PullViewStateNormal = 0,
 	PullViewStateReady,
 	PullViewStateLoading
 } PullViewState;
 
-@protocol SPPullViewDelegate;
+@protocol  SPPullViewDelegate
+
+- (void) pullViewShouldRefresh:(SPPullView *) view;
+
+@end
 
 @interface SPPullView : UIView
 
@@ -45,10 +49,6 @@ typedef enum
 
 @end
 
-@protocol  SPPullViewDelegate <NSObject>
 
-- (void) pullViewShouldRefresh:(SPPullView *) view;
-
-@end
 
 
