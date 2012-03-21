@@ -57,64 +57,64 @@
         self.scrollView = scrollView;
         [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:NULL];
         
-		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
+	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
         
-		self.lastUpdatedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
-		self.lastUpdatedLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		self.lastUpdatedLabel.font = [UIFont systemFontOfSize:12.0f];
-		self.lastUpdatedLabel.textColor = TEXT_COLOR;
-		self.lastUpdatedLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-		self.lastUpdatedLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		self.lastUpdatedLabel.backgroundColor = [UIColor clearColor];
-		self.lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
-		[self addSubview:self.lastUpdatedLabel];
+        self.lastUpdatedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
+	self.lastUpdatedLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.lastUpdatedLabel.font = [UIFont systemFontOfSize:12.0f];
+	self.lastUpdatedLabel.textColor = TEXT_COLOR;
+	self.lastUpdatedLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+	self.lastUpdatedLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+	self.lastUpdatedLabel.backgroundColor = [UIColor clearColor];
+	self.lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
+	[self addSubview:self.lastUpdatedLabel];
         
-		self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
-		self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		self.statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-		self.statusLabel.textColor = TEXT_COLOR;
-		self.statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-		self.statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		self.statusLabel.backgroundColor = [UIColor clearColor];
-		self.statusLabel.textAlignment = UITextAlignmentCenter;
-		[self addSubview:self.statusLabel];
+	self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
+	self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+	self.statusLabel.textColor = TEXT_COLOR;
+	self.statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+	self.statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+	self.statusLabel.backgroundColor = [UIColor clearColor];
+	self.statusLabel.textAlignment = UITextAlignmentCenter;
+	[self addSubview:self.statusLabel];
         
         self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		self.activityView.frame = CGRectMake(30.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
-		[self addSubview:self.activityView];
+	self.activityView.frame = CGRectMake(30.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
+	[self addSubview:self.activityView];
         
-		[self setState:PullViewStateNormal];
+	[self setState:PullViewStateNormal];
     }
     
     return self;
 }
 
-#pragma mark Setter for Pull View
+#pragma mark Setter for Pull View State
 
 - (void) setState:(PullViewState) state 
 {
-    _state = state;
+    	_state = state;
     
 	switch (_state) 
-    {
+    	{
 		case PullViewStateReady:
 			self.statusLabel.text = kPullViewStateReady;
 			[self showActivity:NO animated:NO];
-            self.scrollView.contentInset = UIEdgeInsetsZero;
+            		self.scrollView.contentInset = UIEdgeInsetsZero;
 			break;
             
 		case PullViewStateNormal:
 			self.statusLabel.text = kPullViewStateNormal;
 			[self showActivity:NO animated:NO];
 			[self refreshLastUpdatedDate];
-            self.scrollView.contentInset = UIEdgeInsetsZero;
+            		self.scrollView.contentInset = UIEdgeInsetsZero;
 			break;
             
 		case PullViewStateLoading:
 			self.statusLabel.text = kPullViewStateLoading;
 			[self showActivity:YES animated:YES];
-            self.scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
+            		self.scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
 			break;
             
 		default:
@@ -147,7 +147,8 @@
                 else
                     self.scrollView.contentInset = UIEdgeInsetsMake(MIN(-self.scrollView.contentOffset.y, 60.0f), 0, 0, 0);
             }
-        } else 
+        } 
+        else 
         {
             if (self.state == PullViewStateReady) 
             {
