@@ -30,7 +30,9 @@ typedef enum
 	PullViewStateLoading
 } PullViewState;
 
-@protocol  SPPullViewDelegate
+@class SPPullView;
+
+@protocol  SPPullViewDelegate <NSObject>
 
 - (void) pullViewShouldRefresh:(SPPullView *) view;
 
