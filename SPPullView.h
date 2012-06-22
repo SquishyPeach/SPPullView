@@ -25,6 +25,12 @@
 
 typedef enum 
 {
+    PullViewStyleDefault,
+    PullViewStyleSimple
+} PullViewStyle;
+
+typedef enum 
+{
    	PullViewStateNormal = 0,
 	PullViewStateReady,
 	PullViewStateLoading
@@ -44,13 +50,11 @@ typedef enum
 @property (nonatomic, weak) id <SPPullViewDelegate> delegate;
 
 + (id) pullViewWithScrollView:(UIScrollView *) scrollView;
++ (id) pullViewWithScrollView:(UIScrollView *)scrollView andStyle:(PullViewStyle) style;
 - (id) initWithScrollView:(UIScrollView *) scrollView;
+- (id) initWithScrollView:(UIScrollView *)scrollView andStyle:(PullViewStyle) style;
 
 - (void) refreshLastUpdatedDate;
 - (void) finishedLoading;
 
 @end
-
-
-
-
