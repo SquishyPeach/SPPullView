@@ -47,14 +47,17 @@ typedef enum
 @interface SPPullView : UIView
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) id <SPPullViewDelegate> delegate;
 
-+ (id) pullViewWithScrollView:(UIScrollView *) scrollView;
 + (id) pullViewWithScrollView:(UIScrollView *)scrollView andStyle:(PullViewStyle) style;
-- (id) initWithScrollView:(UIScrollView *) scrollView;
-- (id) initWithScrollView:(UIScrollView *)scrollView andStyle:(PullViewStyle) style;
++ (id) pullViewWithTableView:(UITableView *) tableView andStyle:(PullViewStyle) style;
 
 - (void) refreshLastUpdatedDate;
 - (void) finishedLoading;
 
 @end
+
+
+
+
